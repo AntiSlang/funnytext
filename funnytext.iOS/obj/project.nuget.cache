@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "9CvY7mYdNfnzssV+Owo5QdyDXIvY7Hd1u1z2XwnwlyukkumVWEaqzky17PxG3DlO547eW2WpeTR+hmu7YP+57A==",
+  "success": false,
+  "projectFilePath": "C:\\ALLFOLDER\\proj\\avalonia\\funnytext\\funnytext.iOS\\funnytext.iOS.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1012",
+      "level": "Error",
+      "message": "Platform version is not present for one or more target frameworks, even though they have specified a platform: net8.0-ios"
+    }
+  ]
+}

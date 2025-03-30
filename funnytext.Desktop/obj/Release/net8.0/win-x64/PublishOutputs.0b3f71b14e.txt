@@ -1,0 +1,7 @@
+C:\Users\antis\Desktop\test2\funnytext.Desktop.pdb
+C:\Users\antis\Desktop\test2\av_libglesv2.dll
+C:\Users\antis\Desktop\test2\grdlic.dll
+C:\Users\antis\Desktop\test2\libHarfBuzzSharp.dll
+C:\Users\antis\Desktop\test2\libSkiaSharp.dll
+C:\Users\antis\Desktop\test2\funnytext.pdb
+C:\Users\antis\Desktop\test2\funnytext.Desktop.exe

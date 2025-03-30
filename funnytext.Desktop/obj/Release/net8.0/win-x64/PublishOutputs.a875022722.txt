@@ -1,0 +1,3 @@
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext.Desktop\publish\funnytext.Desktop.pdb
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext.Desktop\publish\funnytext.pdb
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext.Desktop\publish\funnytext.Desktop.exe

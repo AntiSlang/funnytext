@@ -1,0 +1,7 @@
+C:\ALLFOLDER\proj\avalonia\funnytext\publish\funnytext.Desktop.pdb
+C:\ALLFOLDER\proj\avalonia\funnytext\publish\av_libglesv2.dll
+C:\ALLFOLDER\proj\avalonia\funnytext\publish\grdlic.dll
+C:\ALLFOLDER\proj\avalonia\funnytext\publish\libHarfBuzzSharp.dll
+C:\ALLFOLDER\proj\avalonia\funnytext\publish\libSkiaSharp.dll
+C:\ALLFOLDER\proj\avalonia\funnytext\publish\funnytext.pdb
+C:\ALLFOLDER\proj\avalonia\funnytext\publish\funnytext.Desktop.exe

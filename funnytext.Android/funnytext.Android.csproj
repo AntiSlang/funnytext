@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0-android</TargetFramework>
+        <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+        <Nullable>enable</Nullable>
+        <ApplicationId>com.CompanyName.funnytext</ApplicationId>
+        <ApplicationVersion>1</ApplicationVersion>
+        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <AndroidPackageFormat>apk</AndroidPackageFormat>
+        <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+        <AndroidSdkDirectory>C:\ALLFOLDER\android_sdk</AndroidSdkDirectory>
+        <AcceptAndroidSDKLicenses>true</AcceptAndroidSDKLicenses>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AndroidResource Include="Icon.png">
+            <Link>Resources\drawable\Icon.png</Link>
+        </AndroidResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.2.5" />
+        <PackageReference Include="Avalonia.Android" Version="11.2.4" />
+        <PackageReference Include="Avalonia.Controls.ColorPicker" Version="11.2.5" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.5" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.5" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.4" />
+        <PackageReference Include="Avalonia.Xaml.Interactivity" Version="11.2.0.9" />
+        <PackageReference Include="Eremex.Avalonia.Controls" Version="1.1.113" />
+        <PackageReference Include="Eremex.Avalonia.Themes.DeltaDesign" Version="1.1.113" />
+        <PackageReference Include="FluentAvaloniaUI" Version="2.3.0" />
+        <PackageReference Include="NAudio" Version="2.2.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1"/>
+        <ProjectReference Include="..\funnytext\funnytext.csproj"/>
+        <UpToDateCheckInput Remove="Views\MainView.axaml" />
+    </ItemGroup>
+</Project>

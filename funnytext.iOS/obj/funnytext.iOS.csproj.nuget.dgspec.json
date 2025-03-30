@@ -1,0 +1,146 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\ALLFOLDER\\proj\\avalonia\\funnytext\\funnytext.iOS\\funnytext.iOS.csproj": {}
+  },
+  "projects": {
+    "C:\\ALLFOLDER\\proj\\avalonia\\funnytext\\funnytext.iOS\\funnytext.iOS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\ALLFOLDER\\proj\\avalonia\\funnytext\\funnytext.iOS\\funnytext.iOS.csproj",
+        "projectName": "funnytext.iOS",
+        "projectPath": "C:\\ALLFOLDER\\proj\\avalonia\\funnytext\\funnytext.iOS\\funnytext.iOS.csproj",
+        "packagesPath": "C:\\Users\\antis\\.nuget\\packages\\",
+        "outputPath": "C:\\ALLFOLDER\\proj\\avalonia\\funnytext\\funnytext.iOS\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\antis\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-ios"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-ios": {
+            "targetAlias": "net8.0-ios",
+            "projectReferences": {
+              "C:\\ALLFOLDER\\proj\\avalonia\\funnytext\\funnytext\\funnytext.csproj": {
+                "projectPath": "C:\\ALLFOLDER\\proj\\avalonia\\funnytext\\funnytext\\funnytext.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0-ios": {
+          "targetAlias": "net8.0-ios",
+          "dependencies": {
+            "Avalonia.iOS": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\ALLFOLDER\\proj\\avalonia\\funnytext\\funnytext\\funnytext.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\ALLFOLDER\\proj\\avalonia\\funnytext\\funnytext\\funnytext.csproj",
+        "projectName": "funnytext",
+        "projectPath": "C:\\ALLFOLDER\\proj\\avalonia\\funnytext\\funnytext\\funnytext.csproj",
+        "packagesPath": "C:\\Users\\antis\\.nuget\\packages\\",
+        "outputPath": "C:\\ALLFOLDER\\proj\\avalonia\\funnytext\\funnytext\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\antis\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Avalonia": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "Avalonia.Diagnostics": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "Avalonia.Fonts.Inter": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "Avalonia.Themes.Fluent": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.2.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

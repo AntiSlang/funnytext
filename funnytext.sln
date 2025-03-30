@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "funnytext", "funnytext\funnytext.csproj", "{C8E2310C-D0F2-4186-B452-255A7F3F588A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "funnytext.Android", "funnytext.Android\funnytext.Android.csproj", "{CE066C94-C409-4684-92E5-008D5973A609}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "funnytext.Desktop", "funnytext.Desktop\funnytext.Desktop.csproj", "{C07F60DC-02C3-46A2-9187-32503A1F1E9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8E2310C-D0F2-4186-B452-255A7F3F588A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8E2310C-D0F2-4186-B452-255A7F3F588A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8E2310C-D0F2-4186-B452-255A7F3F588A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8E2310C-D0F2-4186-B452-255A7F3F588A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE066C94-C409-4684-92E5-008D5973A609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE066C94-C409-4684-92E5-008D5973A609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE066C94-C409-4684-92E5-008D5973A609}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CE066C94-C409-4684-92E5-008D5973A609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE066C94-C409-4684-92E5-008D5973A609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE066C94-C409-4684-92E5-008D5973A609}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C07F60DC-02C3-46A2-9187-32503A1F1E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C07F60DC-02C3-46A2-9187-32503A1F1E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C07F60DC-02C3-46A2-9187-32503A1F1E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C07F60DC-02C3-46A2-9187-32503A1F1E9F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
