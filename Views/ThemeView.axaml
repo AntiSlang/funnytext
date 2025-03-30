@@ -1,0 +1,164 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:funnytext.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:extensions="clr-namespace:funnytext.Extensions"
+             xmlns:views="clr-namespace:funnytext.Views"
+             xmlns:ui="using:FluentAvalonia.UI.Controls"             
+             xmlns:uip="using:FluentAvalonia.UI.Controls.Primitives"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:viewModels="clr-namespace:funnytext.ViewModels;assembly=funnytext"
+             mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="1920"
+             x:Class="funnytext.Views.ThemeView"
+             x:DataType="viewModels:ThemeViewModel">
+    <Border ><Grid  RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                                                                 ColumnDefinitions="*,Auto"
+                                                                 Margin="10,30,10,10">
+            <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="10">
+                        <StackPanel>
+                            <Button Command="{Binding ToggleDropdownLoadCommand}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="avares://funnytext/Assets/menu_profiles.png" Width="40" Height="40"/>
+                                    <TextBlock Text="Загрузить тему" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        <ComboBox ItemsSource="{Binding ItemsLoad}" SelectedItem="{Binding SelectedItemLoad}" 
+                                  IsVisible="{Binding IsDropdownOpenLoad}" Margin="5">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <Button Command="{Binding ToggleDropdownBaseCommand}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding SelectedItemBase.Image}" Width="40" Height="40"/>
+                                    <TextBlock Text="База темы" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <ComboBox ItemsSource="{Binding ItemsBase}" SelectedItem="{Binding SelectedItemBase}" 
+                                      IsVisible="{Binding IsDropdownOpenBase}" Margin="5">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                                <StackPanel>
+                                    <Button Command="{Binding ToggleDropdownSaveCommand}" >
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding SelectedItemSave.Image}" Width="40" Height="40"/>
+                                            <TextBlock Text="Выбор слота" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                        </StackPanel>
+                                    </Button>
+                            <ComboBox ItemsSource="{Binding ItemsSave}" SelectedItem="{Binding SelectedItemSave}" 
+                                      IsVisible="{Binding IsDropdownOpenSave}" Margin="5">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel>
+                                <Button Command="{Binding SelectBackgroundImageCommand}" CommandParameter="1" Margin="5">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="avares://funnytext/Assets/palette.png" Width="40" Height="40"/>
+                                        <TextBlock Text="Выбор файла" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Command="{Binding ClearImageCommand}" Margin="5">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="avares://funnytext/Assets/menu_quit.png" Width="40" Height="40"/>
+                                        <TextBlock Text="Убрать фон" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                    </StackPanel>
+                                </Button>
+                                <TextBlock Text="Фон в меню" />
+                                <Border Width="120" Height="120" BorderThickness="2" Background="{Binding BackgroundImageBrush}" >
+                                </Border>
+                            </StackPanel>
+                            <StackPanel>
+                                <Button Command="{Binding SelectBackgroundImageCommand}" CommandParameter="2" Margin="5">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="avares://funnytext/Assets/palette.png" Width="40" Height="40"/>
+                                        <TextBlock Text="Выбор файла" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Command="{Binding ClearImage2Command}" Margin="5">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="avares://funnytext/Assets/menu_quit.png" Width="40" Height="40"/>
+                                        <TextBlock Text="Убрать фон" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                    </StackPanel>
+                                </Button>
+                                <TextBlock Text="Фон остальной" />
+                                <Border Width="120" Height="120" BorderThickness="2" Background="{Binding BackgroundImage2Brush}" >
+                               </Border>
+                            </StackPanel>
+                        </StackPanel>
+                <TextBox  HorizontalAlignment="Left" Width="250" Text="{Binding InputText}" Watermark="название темы" Margin="5,0,0,0" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Command="{Binding SettingsViewCommand}" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="avares://funnytext/Assets/return.png" Width="40" Height="40"/>
+                            <TextBlock Text="В настройки" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding SaveCommand}" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="avares://funnytext/Assets/menu_profiles.png" Width="40" Height="40"/>
+                            <TextBlock Text="Сохранить тему" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <ScrollViewer Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Orientation="Vertical">
+                    <mxe:PopupColorEditor Color="{Binding EditorColor}"
+                                          Width="190" Height="30"
+                                          Name="Editor"
+                                          ColorsShowMode="StandardColors,CustomColors"/>
+                    <StackPanel>
+                        <TextBlock Text="Фон" />
+                        <Button Background="{Binding BackgroundColor}" Command="{Binding SelectBackgroundColorCommand}" Width="200" Height="40"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Элементы" />
+                        <Button Background="{Binding ElementColor}" Command="{Binding SelectElementColorCommand}" Width="200" Height="40"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Элементы акцент" />
+                        <Button Background="{Binding ElementAccentColor}" Command="{Binding SelectElementAccentColorCommand}" Width="200" Height="40"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Текст" />
+                        <Button Background="{Binding TextColor}" Command="{Binding SelectTextColorCommand}" Width="200" Height="40"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Границы" />
+                        <Button Background="{Binding BorderColor}" Command="{Binding SelectBorderColorCommand}" Width="200" Height="40"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+                </StackPanel>
+            </ScrollViewer>
+            <views:TutorialView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DataContext="{Binding Tutorial}" />
+        </Grid>
+    </Border>
+</UserControl>

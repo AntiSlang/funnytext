@@ -1,0 +1,14 @@
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\bin\Debug\net8.0\funnytext.deps.json
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\bin\Debug\net8.0\funnytext.dll
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\bin\Debug\net8.0\funnytext.pdb
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\obj\Debug\net8.0\funnytext.csproj.AssemblyReference.cache
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\obj\Debug\net8.0\Avalonia\Resources.Inputs.cache
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\obj\Debug\net8.0\Avalonia\resources
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\obj\Debug\net8.0\funnytext.GeneratedMSBuildEditorConfig.editorconfig
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\obj\Debug\net8.0\funnytext.AssemblyInfoInputs.cache
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\obj\Debug\net8.0\funnytext.AssemblyInfo.cs
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\obj\Debug\net8.0\funnytext.csproj.CoreCompileInputs.cache
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\obj\Debug\net8.0\Avalonia\funnytext.dll
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\obj\Debug\net8.0\Avalonia\funnytext.pdb
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\obj\Debug\net8.0\refint\Avalonia\funnytext.dll
+C:\ALLFOLDER\proj\avalonia\funnytext\funnytext\obj\Debug\net8.0\ref\funnytext.dll

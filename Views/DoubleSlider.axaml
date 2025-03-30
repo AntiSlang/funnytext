@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="funnytext.Views.DoubleSlider"
+             Width="300" Height="50">
+    <UserControl.Resources>
+        <ControlTheme x:Key="ThumbStyle" TargetType="Thumb">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Width="20" Height="20"
+                            CornerRadius="10"/>
+                </ControlTemplate>
+            </Setter>
+        </ControlTheme>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Border Background="#001F3F" Height="6" VerticalAlignment="Center"/>
+        <Border x:Name="ActiveRange" Background="#FFD700" Height="6" VerticalAlignment="Center"
+                Margin="0,0,0,0"/>
+        <Thumb x:Name="LeftThumb" HorizontalAlignment="Left" Theme="{StaticResource ThumbStyle}" Width="20" Height="20"
+               Background="#00A3FF" Cursor="Hand"
+               RenderTransformOrigin="0.5,0.5">
+            <Thumb.RenderTransform>
+                <TranslateTransform/>
+            </Thumb.RenderTransform>
+        </Thumb>
+        <Thumb x:Name="RightThumb" HorizontalAlignment="Left" Theme="{StaticResource ThumbStyle}" Width="20" Height="20"
+               Background="#FFA500" Cursor="Hand"
+               RenderTransformOrigin="0.5,0.5">
+            <Thumb.RenderTransform>
+                <TranslateTransform/>
+            </Thumb.RenderTransform>
+        </Thumb>
+        <TextBlock x:Name="LeftValueText" FontSize="14"/>
+    </Grid>
+</UserControl>

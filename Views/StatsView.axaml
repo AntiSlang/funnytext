@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:funnytext.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:extensions="clr-namespace:funnytext.Extensions"
+             xmlns:views="clr-namespace:funnytext.Views"
+             xmlns:viewModels="clr-namespace:funnytext.ViewModels;assembly=funnytext"
+             mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="1920"
+             x:Class="funnytext.Views.StatsView"
+             x:DataType="viewModels:StatsViewModel">
+    <Border>
+        <Grid RowDefinitions="*,*" ColumnDefinitions="*" Margin="10,30,10,10">
+            <StackPanel Grid.Row="0" Orientation="Vertical" >
+                <TextBlock Text="{Binding stats1}" FontSize="20" VerticalAlignment="Center" Margin="0,0,0,0" />
+                <TextBlock Text="{Binding stats2}" FontSize="20" VerticalAlignment="Center" Margin="0,0,0,0" />
+                <TextBlock Text="{Binding stats3}" FontSize="20" VerticalAlignment="Center" Margin="0,0,0,0" />
+                <TextBlock Text="{Binding favorite}" FontSize="20" VerticalAlignment="Center" Margin="0,0,0,0" />
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button Command="{Binding MainViewCommand}" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="avares://funnytext/Assets/return.png" Width="40" Height="40"/>
+                        <TextBlock Text="В меню" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding ShareCommand}" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="avares://funnytext/Assets/share.png" Width="40" Height="40"/>
+                        <TextBlock Text="Поделиться" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <views:TutorialView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DataContext="{Binding Tutorial}" />
+        </Grid>
+    </Border>
+</UserControl>

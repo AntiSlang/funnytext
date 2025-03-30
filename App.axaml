@@ -1,0 +1,216 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:funnytext"
+             x:Class="funnytext.App"
+             xmlns:theme="clr-namespace:Eremex.AvaloniaUI.Themes;assembly=Eremex.Avalonia.Controls"
+             xmlns:deltaDesign="clr-namespace:Eremex.AvaloniaUI.Themes.DeltaDesign;assembly=Eremex.Avalonia.Themes.DeltaDesign"
+             xmlns:services="clr-namespace:funnytext.Services"
+             RequestedThemeVariant="Default">
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <deltaDesign:DeltaDesignTheme/>
+        <FluentTheme/>
+        <Style Selector="Border">
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        </Style>
+        <Style Selector="ContextMenu">
+            <Setter Property="FontFamily" Value="{DynamicResource AppFontFamily}" />
+        </Style>
+        <Style Selector="TextBlock">
+            <Setter Property="FontFamily" Value="{DynamicResource AppFontFamily}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="FontFamily" Value="{DynamicResource AppFontFamily}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+            <Setter Property="Background" Value="{DynamicResource ElementGradient}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        </Style>
+        <Style Selector="CheckBox">
+            <Setter Property="FontFamily" Value="{DynamicResource AppFontFamily}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        </Style>
+        <Style Selector="CheckBox:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ElementGradient}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        </Style>
+        <Style Selector="CheckBox:pressed">
+            <Setter Property="Background" Value="{DynamicResource ElementGradient}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        </Style>
+        <Style Selector="CheckBox:checked">
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="FontFamily" Value="{DynamicResource AppFontFamily}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+            <Setter Property="Background" Value="{DynamicResource ElementGradient}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        </Style>
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ElementGradient}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        </Style>
+        <Style Selector="Button:pressed">
+            <Setter Property="Background" Value="{DynamicResource ElementGradient}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        </Style>
+        <Style Selector="Button:focus">
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        </Style>
+        
+        <Style Selector="ComboBox">
+            <Setter Property="Background" Value="{DynamicResource ElementGradient}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+            <Setter Property="ItemContainerTheme">
+                <Setter.Value>
+                    <ControlTheme TargetType="ComboBoxItem">
+                        <Setter Property="Background" Value="{DynamicResource ElementColor}" />
+                        <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+                        <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+                    </ControlTheme>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style Selector="ComboBox:pointerover">
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+            <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
+        </Style>
+        <Style Selector="ComboBox:disabled">
+            <Setter Property="Background" Value="{DynamicResource ElementGradient}" />
+        </Style>
+        <Style Selector="ComboBoxItem">
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+        </Style>
+        <Style Selector="ComboBoxItem:pointerover">
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+            <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
+        </Style>
+        <Style Selector="RadioButton">
+            <Setter Property="FontFamily" Value="{DynamicResource AppFontFamily}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+        </Style>
+    </Application.Styles>
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key='Light'>
+                    <SolidColorBrush x:Key='BackgroundColor'>#B6F4FF</SolidColorBrush>
+                    <SolidColorBrush x:Key='ElementColor'>#63D1F4</SolidColorBrush>
+                    <SolidColorBrush x:Key='TextColor'>#000000</SolidColorBrush>
+                    <SolidColorBrush x:Key='ElementAccentColor'>#63D1F4</SolidColorBrush>
+                    <SolidColorBrush x:Key='BorderColor'>#000000</SolidColorBrush>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key='Dark'>
+                    <SolidColorBrush x:Key='BackgroundColor'>#006D80</SolidColorBrush>
+                    <SolidColorBrush x:Key='ElementColor'>#0097B2</SolidColorBrush>
+                    <SolidColorBrush x:Key='TextColor'>#FFFFFF</SolidColorBrush>
+                    <SolidColorBrush x:Key='ElementAccentColor'>#0097B2</SolidColorBrush>
+                    <SolidColorBrush x:Key='BorderColor'>#FFFFFF</SolidColorBrush>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key='{x:Static services:CustomThemes.ArabLight}'>
+                    <SolidColorBrush x:Key='BackgroundColor' Color="{DynamicResource BackgroundColorResource}" />
+                    <SolidColorBrush x:Key='ElementColor' Color="{DynamicResource ElementColorResource}" />
+                    <SolidColorBrush x:Key='TextColor' Color="{DynamicResource TextColorResource}" />
+                    <SolidColorBrush x:Key='ElementAccentColor' Color="{DynamicResource ElementAccentColorResource}" />
+                    <SolidColorBrush x:Key='BorderColor' Color="{DynamicResource BorderColorResource}" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key='{x:Static services:CustomThemes.ArabDark}'>
+                    <SolidColorBrush x:Key='BackgroundColor' Color="{DynamicResource BackgroundColorResource}" />
+                    <SolidColorBrush x:Key='ElementColor' Color="{DynamicResource ElementColorResource}" />
+                    <SolidColorBrush x:Key='TextColor' Color="{DynamicResource TextColorResource}" />
+                    <SolidColorBrush x:Key='ElementAccentColor' Color="{DynamicResource ElementAccentColorResource}" />
+                    <SolidColorBrush x:Key='BorderColor' Color="{DynamicResource BorderColorResource}" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key='{x:Static services:CustomThemes.Custom1}'>
+                    <SolidColorBrush x:Key='BackgroundColor' Color="{DynamicResource BackgroundColorResource}" />
+                    <SolidColorBrush x:Key='ElementColor' Color="{DynamicResource ElementColorResource}" />
+                    <SolidColorBrush x:Key='TextColor' Color="{DynamicResource TextColorResource}" />
+                    <SolidColorBrush x:Key='ElementAccentColor' Color="{DynamicResource ElementAccentColorResource}" />
+                    <SolidColorBrush x:Key='BorderColor' Color="{DynamicResource BorderColorResource}" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key='{x:Static services:CustomThemes.Custom2}'>
+                    <SolidColorBrush x:Key='BackgroundColor' Color="{DynamicResource BackgroundColorResource}" />
+                    <SolidColorBrush x:Key='ElementColor' Color="{DynamicResource ElementColorResource}" />
+                    <SolidColorBrush x:Key='TextColor' Color="{DynamicResource TextColorResource}" />
+                    <SolidColorBrush x:Key='ElementAccentColor' Color="{DynamicResource ElementAccentColorResource}" />
+                    <SolidColorBrush x:Key='BorderColor' Color="{DynamicResource BorderColorResource}" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key='{x:Static services:CustomThemes.Custom3}'>
+                    <SolidColorBrush x:Key='BackgroundColor' Color="{DynamicResource BackgroundColorResource}" />
+                    <SolidColorBrush x:Key='ElementColor' Color="{DynamicResource ElementColorResource}" />
+                    <SolidColorBrush x:Key='TextColor' Color="{DynamicResource TextColorResource}" />
+                    <SolidColorBrush x:Key='ElementAccentColor' Color="{DynamicResource ElementAccentColorResource}" />
+                    <SolidColorBrush x:Key='BorderColor' Color="{DynamicResource BorderColorResource}" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key='{x:Static services:CustomThemes.Custom4}'>
+                    <SolidColorBrush x:Key='BackgroundColor' Color="{DynamicResource BackgroundColorResource}" />
+                    <SolidColorBrush x:Key='ElementColor' Color="{DynamicResource ElementColorResource}" />
+                    <SolidColorBrush x:Key='TextColor' Color="{DynamicResource TextColorResource}" />
+                    <SolidColorBrush x:Key='ElementAccentColor' Color="{DynamicResource ElementAccentColorResource}" />
+                    <SolidColorBrush x:Key='BorderColor' Color="{DynamicResource BorderColorResource}" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key='{x:Static services:CustomThemes.Custom5}'>
+                    <SolidColorBrush x:Key='BackgroundColor' Color="{DynamicResource BackgroundColorResource}" />
+                    <SolidColorBrush x:Key='ElementColor' Color="{DynamicResource ElementColorResource}" />
+                    <SolidColorBrush x:Key='TextColor' Color="{DynamicResource TextColorResource}" />
+                    <SolidColorBrush x:Key='ElementAccentColor' Color="{DynamicResource ElementAccentColorResource}" />
+                    <SolidColorBrush x:Key='BorderColor' Color="{DynamicResource BorderColorResource}" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+            <LinearGradientBrush x:Key="ElementGradient" StartPoint="50%,0%" EndPoint="50%,100%">
+                <GradientStop Offset="0.0" Color="{DynamicResource ElementColorResource}"/>
+                <GradientStop Offset="1.0" Color="{DynamicResource ElementAccentColorResource}"/>
+            </LinearGradientBrush>
+            <Color x:Key="BackgroundColorResource">#B6F4FF</Color>
+            <Color x:Key="ElementColorResource">#ADE7FF</Color>
+            <Color x:Key="TextColorResource">#000000</Color>
+            <Color x:Key="ElementAccentColorResource">#ADE7FF</Color>
+            <Color x:Key="BorderColorResource">#000000</Color>
+            
+            <SolidColorBrush x:Key="MenuFlyoutItemBackground" Color="{DynamicResource BackgroundColorResource}" />
+            <SolidColorBrush x:Key="MenuFlyoutItemForeground" Color="{DynamicResource TextColorResource}" />
+            <SolidColorBrush x:Key="MenuFlyoutItemForegroundPointerOver" Color="{DynamicResource TextColorResource}" />
+            <SolidColorBrush x:Key="MenuFlyoutItemForegroundPressed" Color="{DynamicResource TextColorResource}" />
+            <SolidColorBrush x:Key="MenuFlyoutItemForegroundDisabled" Color="{DynamicResource TextColorResource}" />
+            <SolidColorBrush x:Key="MenuFlyoutSubItemChevron" Color="{DynamicResource TextColorResource}" />
+            <SolidColorBrush x:Key="MenuFlyoutSubItemChevronPointerOver" Color="{DynamicResource TextColorResource}" />
+            <SolidColorBrush x:Key="MenuFlyoutSubItemChevronPressed" Color="{DynamicResource TextColorResource}" />
+            <SolidColorBrush x:Key="MenuFlyoutSubItemChevronSubMenuOpened" Color="{DynamicResource TextColorResource}" />
+            <SolidColorBrush x:Key="MenuFlyoutSubItemChevronDisabled" Color="{DynamicResource TextColorResource}" />
+            <SolidColorBrush x:Key="MenuFlyoutItemKeyboardAcceleratorTextForeground" Color="{DynamicResource BackgroundColorResource}" />
+            <SolidColorBrush x:Key="MenuFlyoutPresenterBackground" Color="{DynamicResource BackgroundColorResource}" />
+            <SolidColorBrush x:Key="MenuFlyoutPresenterBorderBrush" Color="{DynamicResource BorderColorResource}" />
+            
+            <SolidColorBrush x:Key="ComboBoxDropDownBackground" Color="{DynamicResource ElementColorResource}" />
+            <SolidColorBrush x:Key="ComboBoxDropDownBorderBrush" Color="{DynamicResource BorderColorResource}" />
+            
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStroke" Color="{DynamicResource BorderColorResource}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStrokePointerOver" Color="{DynamicResource BorderColorResource}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseStrokePressed" Color="{DynamicResource BorderColorResource}" />
+                
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStroke" Color="{DynamicResource ElementColorResource}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePointerOver" Color="{DynamicResource SystemAccentColorLight1}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePressed" Color="{DynamicResource SystemAccentColorDark1}" />
+                
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFill" Color="{DynamicResource ElementColorResource}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPointerOver" Color="{DynamicResource SystemAccentColorLight1}" />
+            <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPressed" Color="{DynamicResource SystemAccentColorDark1}" />
+            
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeIndeterminate" Color="{DynamicResource BorderColorResource}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedDisabled" Color="{DynamicResource BorderColorResource}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUnchecked" Color="{DynamicResource BorderColorResource}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPointerOver" Color="{DynamicResource BorderColorResource}" />
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPressed" Color="{DynamicResource BorderColorResource}" />
+            
+            <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillChecked" Color="{DynamicResource ElementColorResource}" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

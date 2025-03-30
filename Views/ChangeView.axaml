@@ -1,0 +1,225 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:funnytext.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:extensions="clr-namespace:funnytext.Extensions"
+             xmlns:views="clr-namespace:funnytext.Views"
+             mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="1920"
+             x:Class="funnytext.Views.ChangeView"
+             x:DataType="vm:ChangeViewModel">
+    <Border>
+        <Grid RowDefinitions="6*,7*,4*" ColumnDefinitions="*,*,*,*" Margin="10,30,10,10">
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Vertical">
+                <ScrollViewer>
+                    <TextBox Watermark="введите текст..." Text="{Binding Input}" AcceptsReturn="True" Height="70" TextChanged="OnInputChanged" />
+                </ScrollViewer>
+                <ScrollViewer>
+                    <TextBox Watermark="здесь будет результат" IsReadOnly="True" Text="{Binding result}" AcceptsReturn="True" Height="70" />
+                </ScrollViewer>
+                <TextBlock Text="Скопировано" IsVisible="{Binding copied}" VerticalAlignment="Center" Margin="0,0,0,0" />
+            </StackPanel>
+            
+            <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" MaxHeight="215">
+                <StackPanel Spacing="15" Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Spacing="5" Margin="0,0,10,0">
+                        <RadioButton GroupName="radiogroup" Command="{Binding OnChangeSomething}" Content="{Binding rgrouptext1}" IsChecked="{Binding radiogroup_1}" />
+                        <RadioButton GroupName="radiogroup" Command="{Binding OnChangeSomething}" Content="{Binding rgrouptext2}" IsChecked="{Binding radiogroup_2}"  />
+                        <RadioButton GroupName="radiogroup" Command="{Binding OnChangeSomething}" Content="{Binding rgrouptext3}" IsChecked="{Binding radiogroup_3}"  />
+                        <RadioButton GroupName="radiogroup" Command="{Binding OnChangeSomething}" Content="{Binding rgrouptext4}" IsChecked="{Binding radiogroup_4}"  />
+                    </StackPanel>
+                
+                    <StackPanel Orientation="Vertical" Spacing="5" Margin="0,0,10,0">
+                        <RadioButton GroupName="randomorshagtwo" Command="{Binding OnChangeSomething}" Content="Шаг" IsChecked="{Binding randomorshagtwo_1}"  />
+                        <RadioButton GroupName="randomorshagtwo" Command="{Binding OnChangeSomething}" Content="Рандом" IsChecked="{Binding randomorshagtwo_2}" />
+                    </StackPanel>
+                
+                    <StackPanel Orientation="Vertical" Spacing="5" Margin="0,0,10,0">
+                        <RadioButton GroupName="invtwo" Command="{Binding Inverse_some_radiogroup}" Content="без инверсии" IsChecked="{Binding invtwo_1}" />
+                        <RadioButton GroupName="invtwo" Command="{Binding Inverse_some_radiogroup}" Content="инверсия" IsChecked="{Binding invtwo_2}"  />
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+                
+            <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto" MaxHeight="215">
+                <StackPanel>
+                    <CheckBox Content="Пробелы между слов" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[0]}" />
+                    <CheckBox Content="Пробелы между символов" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[1]}" />
+                    <CheckBox Content="Зеркало" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[2]}" />
+                    <CheckBox Content="=транслит=" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[3]}" />
+                    <CheckBox Content="=раскладка=" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[4]}" />
+                    <CheckBox Content="Цифры-часики" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[5]}" />
+                    <CheckBox Content="Замена" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[6]}" />
+                    <CheckBox Content="Валюты" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[7]}" />
+                    <CheckBox Content="Мешалка" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[8]}" />
+                    <CheckBox Content="1337 (leet)" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[9]}" />
+                    <CheckBox Content="Повтор" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[10]}" />
+                    <CheckBox Content="Кроме" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[11]}" />
+                    <CheckBox Content="Убрать идущие подряд" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[12]}" />
+                    <CheckBox Content="Вставить" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[13]}" />
+                    <CheckBox Content="Кроме" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[14]}" />
+                    <CheckBox Content="Замена" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[15]}" />
+                </StackPanel>
+            </ScrollViewer>
+                
+            <ScrollViewer Grid.Row="1" Grid.Column="2" VerticalScrollBarVisibility="Auto" MaxHeight="215">
+                <StackPanel>
+                    <ComboBox ItemsSource="{Binding Itemstranslit}" SelectedItem="{Binding SelectedItemtranslit}" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox ItemsSource="{Binding Itemsraskladka}" SelectedItem="{Binding SelectedItemraskladka}" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox ItemsSource="{Binding Itemsrepeat}" SelectedItem="{Binding SelectedItemrepeat}" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox ItemsSource="{Binding Itemsafterevery}" SelectedItem="{Binding SelectedItemafterevery}" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox ItemsSource="{Binding Itemswhatevery}" SelectedItem="{Binding SelectedItemwhatevery}" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox ItemsSource="{Binding Itemsmixdropdown}" SelectedItem="{Binding SelectedItemmixdropdown}" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox ItemsSource="{Binding Itemsnrwhat}" SelectedItem="{Binding SelectedItemnrwhat}" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox ItemsSource="{Binding Itemsnrof}" SelectedItem="{Binding SelectedItemnrof}" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox ItemsSource="{Binding Itemsnrmode}" SelectedItem="{Binding SelectedItemnrmode}" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+            </ScrollViewer>
+            
+            <ScrollViewer Grid.Row="1" Grid.Column="3" VerticalScrollBarVisibility="Auto" MaxHeight="215">
+                <StackPanel  Orientation="Vertical" Spacing="10" Margin="0,0,10,0">
+                    <TextBox Width="50" Text="{Binding shag}" TextChanged="OnNumberInputChanged_1" Margin="5,0,5,0" />
+                    <TextBox Width="50" Text="{Binding randommininput}" TextChanged="OnNumberInputChanged_1" Margin="5,0,5,0" />
+                    <TextBox Width="50" Text="{Binding randommaxinput}" TextChanged="OnNumberInputChanged_2" Margin="5,0,5,0" />
+                    <TextBox Width="50" Text="{Binding inputsmile}" Margin="5,0,5,0" />
+                    <TextBox Width="50" Text="{Binding ieb1}" Margin="5,0,5,0" />
+                    <TextBox Width="50" Text="{Binding ieb2}" Margin="5,0,5,0" />
+                    <TextBox Width="50" Text="{Binding nrinpwhat}" Margin="5,0,5,0" />
+                    <TextBox Width="50" Text="{Binding nrinphow}" TextChanged="OnNumberInputChanged_0" Margin="5,0,5,0" />
+                    <TextBox Width="50" Text="{Binding inputpovtor}" TextChanged="OnNumberInputChanged_2" Margin="5,0,5,0" />
+                    <TextBox Width="50" Text="{Binding krome}" Margin="5,0,5,0" MaxLength="{Binding krome_limit}"/>
+                    <TextBox Width="50" Text="{Binding kromesmile}" Margin="5,0,5,0" MaxLength="{Binding kromesmile_limit}"/>
+                    <TextBox Width="50" Text="{Binding podryad}" Margin="5,0,5,0" />
+                </StackPanel>
+            </ScrollViewer>
+            
+            <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <Button IsVisible="{Binding sharebtn}" Command="{Binding ShareCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/share.png" Width="40" Height="40"/>
+                                <TextBlock Text="Поделиться" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding ChangeViewCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/re.png" Width="40" Height="40"/>
+                                <TextBlock Text="Сброс" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding MakeCommand}" IsEnabled="{Binding ButtonStartInteractable}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/okey.png" Width="40" Height="40"/>
+                                <TextBlock Text="Готово" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,0,0,0">
+                            <Button Command="{Binding ShowPresetMenuCommand}" Margin="5">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="avares://funnytext/Assets/menu_profiles.png" Width="40" Height="40"/>
+                                    <TextBlock Text="Профиль" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox x:Name="ProfileSelection" ItemsSource="{Binding Profiles}" 
+                                          SelectedItem="{Binding SelectedProfile}"
+                                          IsVisible="{Binding IsProfileSelectionVisible}" Margin="5"/>
+                                <TextBox Watermark="название" x:Name="PresetNameInput" Text="{Binding PresetName}"
+                                         IsVisible="{Binding IsSaving}" Margin="5"/>
+                            </StackPanel>
+                            <Button Content="OK" IsEnabled="{Binding SavingIsEnabled}" Command="{Binding ConfirmPresetCommand}"
+                                    IsVisible="{Binding IsConfirmVisible}" Margin="5"/>
+                        </StackPanel>
+                        <Button Command="{Binding MainViewCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/return.png" Width="40" Height="40"/>
+                                <TextBlock Text="В меню" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding RandomSettingsCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/menu_random.png" Width="40" Height="40"/>
+                                <TextBlock Text="Случайные настройки" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+            <views:TutorialView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" DataContext="{Binding Tutorial}" />
+        </Grid>
+    </Border>
+</UserControl>

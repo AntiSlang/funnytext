@@ -1,0 +1,270 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:funnytext.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:extensions="clr-namespace:funnytext.Extensions"
+             xmlns:views="clr-namespace:funnytext.Views"
+             xmlns:viewModels="clr-namespace:funnytext.ViewModels;assembly=funnytext"
+             mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="1920"
+             x:Class="funnytext.Views.SettingsView"
+             x:DataType="viewModels:SettingsViewModel">
+    <Border ><Grid  RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                                                                 ColumnDefinitions="*,Auto"
+                                                                 Margin="10,30,10,10">
+            <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.Row="0" Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                        <StackPanel>
+                        <Button Command="{Binding ToggleDropdownFontCommand}" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding SelectedItemFont.Image}" Width="40" Height="40"/>
+                                <TextBlock Text="Шрифт" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <ComboBox ItemsSource="{Binding ItemsFont}" SelectedItem="{Binding SelectedItemFont}" 
+                                  IsVisible="{Binding IsDropdownOpenFont}" Margin="5">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                        <StackPanel >
+                            <Button Command="{Binding ToggleDropdownLanguageCommand}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding SelectedItemLanguage.Image}" Width="40" Height="40"/>
+                                    <TextBlock Text="Язык" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <ComboBox ItemsSource="{Binding ItemsLanguage}" SelectedItem="{Binding SelectedItemLanguage}" 
+                                      IsVisible="{Binding IsDropdownOpenLanguage}" Margin="5">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel >
+                            <Button Command="{Binding ToggleDropdownThemeCommand}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding SelectedItemTheme.Image}" Width="40" Height="40"/>
+                                    <TextBlock Text="Тема" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <ComboBox ItemsSource="{Binding ItemsTheme}" SelectedItem="{Binding SelectedItemTheme}" 
+                                      IsVisible="{Binding IsDropdownOpenTheme}" Margin="5">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel >
+                            <Button Command="{Binding ToggleDropdownMusicCommand}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding SelectedItemMusic.Image}" Width="40" Height="40"/>
+                                    <TextBlock Text="Звук" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <ComboBox ItemsSource="{Binding ItemsMusic}" SelectedItem="{Binding SelectedItemMusic}" 
+                                      IsVisible="{Binding IsDropdownOpenMusic}" Margin="5">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <Button Command="{Binding ToggleDropdownMakeCommand}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding SelectedItemMake.Image}" Width="40" Height="40"/>
+                                    <TextBlock Text="Режим" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <ComboBox ItemsSource="{Binding ItemsMake}" SelectedItem="{Binding SelectedItemMake}" 
+                                      IsVisible="{Binding IsDropdownOpenMake}" Margin="5">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel IsVisible="{Binding IsAndroidDropdownVisible}">
+                            <Button Command="{Binding ToggleDropdownTrayCommand}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding SelectedItemTray.Image}" Width="40" Height="40"/>
+                                    <TextBlock Text="Запуск программы" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <ComboBox ItemsSource="{Binding ItemsTray}" SelectedItem="{Binding SelectedItemTray}" 
+                                      IsVisible="{Binding IsDropdownOpenTray}" Margin="5">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel >
+                            <Button Command="{Binding ToggleDropdownStartCommand}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding SelectedItemStart.Image}" Width="40" Height="40"/>
+                                    <TextBlock Text="Авто-загрузка профиля" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <ComboBox ItemsSource="{Binding ItemsStart}" SelectedItem="{Binding SelectedItemStart}" 
+                                      IsVisible="{Binding IsDropdownOpenStart}" Margin="5">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                        <Button Command="{Binding MainViewCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/return.png" Width="40" Height="40"/>
+                                <TextBlock Text="В меню" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding RestartCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/re.png" Width="40" Height="40"/>
+                                <TextBlock Text="По умолчанию" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding ThemeViewCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/palette.png" Width="40" Height="40"/>
+                                <TextBlock Text="Темы" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding GuideResetCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/menu_guide.png" Width="40" Height="40"/>
+                                <TextBlock Text="Сбросить обучение" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                            <TextBlock Text="Кнопки - и +" VerticalAlignment="Center" Margin="0,0,10,0" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Width="50" TextChanged="OnNumberInputChanged" Text="{Binding InputKolvo}" Margin="5,0,5,0" />
+                                <Button Content="-" Width="30" IsEnabled="{Binding ButtonKolvoInteractable}" Command="{Binding ChangeZnachCommand}">
+                                    <Button.CommandParameter>
+                                        <system:Int32>-1</system:Int32>
+                                    </Button.CommandParameter>
+                                </Button>
+                                <Button Content="+" Width="30" Command="{Binding ChangeZnachCommand}">
+                                    <Button.CommandParameter>
+                                        <system:Int32>1</system:Int32>
+                                    </Button.CommandParameter>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Vertical" >
+                        <Button Command="{Binding OnImportClick}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/palette.png" Width="40" Height="40"/>
+                                <TextBlock Text="Импорт тем" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding OnExportClick}" CommandParameter="True" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/palette.png" Width="40" Height="40"/>
+                                <TextBlock Text="Экспорт тем" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding OnImportClick}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/menu_profiles.png" Width="40" Height="40"/>
+                                <TextBlock Text="Импорт профилей" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding OnExportClick}" CommandParameter="False" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/menu_profiles.png" Width="40" Height="40"/>
+                                <TextBlock Text="Экспорт профилей" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" IsVisible="{Binding IsSchedule}">
+                <views:DoubleSlider />
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                    <Button Command="{Binding ToggleDropdownSchedule1Command}" >
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding SelectedItemSchedule1.Image}" Width="40" Height="40"/>
+                            <TextBlock Text="Дневная тема" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                <ComboBox ItemsSource="{Binding ItemsSchedule1}" SelectedItem="{Binding SelectedItemSchedule1}" 
+                          IsVisible="{Binding IsDropdownOpenSchedule1}" Margin="5">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                        <Button Command="{Binding ToggleDropdownSchedule2Command}" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding SelectedItemSchedule2.Image}" Width="40" Height="40"/>
+                                <TextBlock Text="Ночная тема" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                <ComboBox ItemsSource="{Binding ItemsSchedule2}" SelectedItem="{Binding SelectedItemSchedule2}" 
+                          IsVisible="{Binding IsDropdownOpenSchedule2}" Margin="5">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding tipoftheday}" VerticalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap"/>
+            <views:TutorialView Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" DataContext="{Binding Tutorial}" />
+        </Grid>
+    </Border>
+</UserControl>

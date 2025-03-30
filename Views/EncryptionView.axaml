@@ -1,0 +1,122 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:funnytext.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:extensions="clr-namespace:funnytext.Extensions"
+             xmlns:views="clr-namespace:funnytext.Views"
+             mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="1920"
+             x:Class="funnytext.Views.EncryptionView"
+             x:DataType="vm:EncryptionViewModel">
+    <Border>
+        <Grid RowDefinitions="3*,4*,2*" ColumnDefinitions="*,Auto" Margin="10,30,10,10">
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical">
+                <ScrollViewer >
+                    <TextBox Watermark="введите текст..." Text="{Binding Input}" AcceptsReturn="True" Height="70" TextChanged="OnInputChanged" />
+                </ScrollViewer>
+                <ScrollViewer >
+                    <TextBox Watermark="здесь будет результат" IsReadOnly="True" Text="{Binding result}" AcceptsReturn="True" Height="70" />
+                </ScrollViewer>
+                <TextBlock Text="Скопировано" IsVisible="{Binding copied}" VerticalAlignment="Center" Margin="0,0,0,0" />
+            </StackPanel>
+            
+            <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical" Spacing="10" Margin="0,0,10,0">
+                    <TextBlock Text="Левая группа:" FontWeight="Bold" />
+                    <RadioButton GroupName="LeftGroup" Command="{Binding OnChangeSomething}" Content="{extensions:Localization encryption}" IsChecked="{Binding LeftEncryption}" />
+                    <RadioButton GroupName="LeftGroup" Command="{Binding OnChangeSomething}" Content="Дешифровка" IsChecked="{Binding LeftDecryption}"  />
+                    <StackPanel IsVisible="{Binding RightCaesar}" Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="Сдвиг Цезаря" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <TextBox Width="50" TextChanged="OnNumberInputChanged" Text="{Binding InputKolvo}" Margin="5,0,5,0" />
+                        <Button Content="-" Width="30" IsEnabled="{Binding ButtonKolvoInteractable}" Command="{Binding ChangeCaesarCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>-1</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                        <Button Content="+" Width="30" IsEnabled="{Binding ButtonKolvo2Interactable}" Command="{Binding ChangeCaesarCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>1</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                    <ComboBox IsVisible="{Binding IsDropdownMorse }" ItemsSource="{Binding ItemsMorse}" SelectedItem="{Binding SelectedItemMorse}" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+            </ScrollViewer>
+            
+            <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical" Spacing="10" Margin="10,0,0,0">
+                    <TextBlock Text="Правая группа:" FontWeight="Bold" />
+                    <RadioButton GroupName="RightGroup" Command="{Binding OnChangeSomething}" Content="ASCII" IsChecked="{Binding RightASCII}" />
+                    <RadioButton GroupName="RightGroup" Command="{Binding OnChangeSomething}" Content="Unicode" IsChecked="{Binding RightUnicode}" />
+                    <RadioButton GroupName="RightGroup" Command="{Binding OnChangeSomething}" Content="Алфавит" IsChecked="{Binding RightAlphabet}" />
+                    <RadioButton GroupName="RightGroup" Command="{Binding OnChangeSomething}" Content="Цезарь" IsChecked="{Binding RightCaesar}" />
+                    <RadioButton GroupName="RightGroup" Command="{Binding OnChangeSomething}" Content="Морзе" IsChecked="{Binding RightMorse}" />
+                </StackPanel>
+            </ScrollViewer>
+            
+            <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                    <Button IsVisible="{Binding sharebtn}" Command="{Binding ShareCommand}" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="avares://funnytext/Assets/share.png" Width="40" Height="40"/>
+                            <TextBlock Text="Поделиться" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding EncryptionViewCommand}" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="avares://funnytext/Assets/re.png" Width="40" Height="40"/>
+                            <TextBlock Text="Сброс" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding MakeCommand}" IsEnabled="{Binding ButtonStartInteractable}" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="avares://funnytext/Assets/okey.png" Width="40" Height="40"/>
+                            <TextBlock Text="Готово" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,0,0,0">
+                        <Button Command="{Binding ShowPresetMenuCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/menu_profiles.png" Width="40" Height="40"/>
+                                <TextBlock Text="Профиль" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox x:Name="ProfileSelection" ItemsSource="{Binding Profiles}" 
+                                      SelectedItem="{Binding SelectedProfile}"
+                                      IsVisible="{Binding IsProfileSelectionVisible}" Margin="5"/>
+                            <TextBox Watermark="название" x:Name="PresetNameInput" Text="{Binding PresetName}"
+                                     IsVisible="{Binding IsSaving}" Margin="5"/>
+                        </StackPanel>
+                        <Button Content="OK" IsEnabled="{Binding SavingIsEnabled}" Command="{Binding ConfirmPresetCommand}"
+                                IsVisible="{Binding IsConfirmVisible}" Margin="5"/>
+                    </StackPanel>
+                    <Button Command="{Binding MainViewCommand}" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="avares://funnytext/Assets/return.png" Width="40" Height="40"/>
+                            <TextBlock Text="В меню" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding RandomSettingsCommand}" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="avares://funnytext/Assets/menu_random.png" Width="40" Height="40"/>
+                            <TextBlock Text="Случайные настройки" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+            <views:TutorialView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DataContext="{Binding Tutorial}" />
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:funnytext.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:views="clr-namespace:funnytext.Views"
+             mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="1920"
+             x:Class="funnytext.Views.AboutView"
+             x:DataType="vm:AboutViewModel">
+    
+    <Border Padding="20">
+        <Grid RowDefinitions="Auto,Auto,Auto"
+              ColumnDefinitions="Auto,*"
+              MaxWidth="400"
+              HorizontalAlignment="Left"
+              Margin="10,30,10,10">
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="10">
+                <Button IsEnabled="True" Command="{Binding OpenLinkCommand}" CommandParameter="https://play.google.com/store/apps/dev?id=5296515076817244229" Margin="5">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="avares://funnytext/Assets/gp.png" Width="40" Height="40"/>
+                    <TextBlock Text="Google Play" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button IsEnabled="True" Command="{Binding OpenLinkCommand}" CommandParameter="https://steamcommunity.com/id/antislangdev" Margin="5">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="avares://funnytext/Assets/steam.png" Width="40" Height="40"/>
+                    <TextBlock Text="Steam" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button IsEnabled="True" Command="{Binding OpenLinkCommand}" CommandParameter="https://t.me/antislangdev" Margin="5">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="avares://funnytext/Assets/tg.png" Width="40" Height="40"/>
+                    <TextBlock Text="Telegram" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding ShareCommand}" Margin="5">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="avares://funnytext/Assets/share.png" Width="40" Height="40"/>
+                    <TextBlock Text="Поделиться" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding MainViewCommand}" Margin="5">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="avares://funnytext/Assets/return.png" Width="40" Height="40"/>
+                    <TextBlock Text="В меню" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+            </StackPanel>
+            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                       Text="Последнее обновление: --------"
+                       HorizontalAlignment="Center"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"
+                       FontSize="14"/>
+            <views:TutorialView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DataContext="{Binding Tutorial}" />
+            
+        </Grid>
+    </Border>
+</UserControl>

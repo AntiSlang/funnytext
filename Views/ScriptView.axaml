@@ -1,0 +1,122 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:funnytext.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:extensions="clr-namespace:funnytext.Extensions"
+             xmlns:views="clr-namespace:funnytext.Views"
+             xmlns:viewModels="clr-namespace:funnytext.ViewModels;assembly=funnytext"
+             xmlns:views1="clr-namespace:funnytext.Views;assembly=funnytext"
+             mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="1920"
+             x:Class="funnytext.Views.ScriptView"
+             x:DataType="viewModels:ScriptViewModel">
+    <Border>
+        <Grid RowDefinitions="3*,*" ColumnDefinitions="*,Auto" Margin="10,30,10,10">
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <ComboBox ItemsSource="{Binding ItemsCreate}" SelectedItem="{Binding SelectedItemCreate}" Margin="5">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox ItemsSource="{Binding ItemsEdit1}" SelectedItem="{Binding SelectedItemEdit1}" Margin="5">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox IsVisible="{Binding Is2Visible}" ItemsSource="{Binding ItemsEdit2}" SelectedItem="{Binding SelectedItemEdit2}" Margin="5">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox IsVisible="{Binding Is3Visible}"  ItemsSource="{Binding ItemsEdit3}" SelectedItem="{Binding SelectedItemEdit3}" Margin="5">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox IsVisible="{Binding Is4Visible}"  ItemsSource="{Binding ItemsEdit4}" SelectedItem="{Binding SelectedItemEdit4}" Margin="5">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Image}" Width="40" Height="40"/>
+                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Button IsEnabled="{Binding MinusEnabled}" Command="{Binding MinusCommand}" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="avares://funnytext/Assets/menu_quit.png" Width="40" Height="40"/>
+                            <TextBlock Text="-" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button IsEnabled="{Binding PlusEnabled}" Command="{Binding PlusCommand}" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="avares://funnytext/Assets/okey.png" Width="40" Height="40"/>
+                            <TextBlock Text="+" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <StackPanel>
+                    <Button Command="{Binding ShowPresetMenuCommand}" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="avares://funnytext/Assets/menu_profiles.png" Width="40" Height="40"/>
+                            <TextBlock Text="Профиль" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+
+                    <ComboBox x:Name="ProfileSelection" ItemsSource="{Binding Profiles}" 
+                              SelectedItem="{Binding SelectedProfile}"
+                              IsVisible="{Binding IsProfileSelectionVisible}" Margin="5"/>
+
+                    <TextBox Watermark="название" x:Name="PresetNameInput" Text="{Binding PresetName}"
+                             IsVisible="{Binding IsSaving}" Margin="5"/>
+                
+                    <Button Content="OK" IsEnabled="{Binding SavingIsEnabled}" Command="{Binding ConfirmPresetCommand}"
+                            IsVisible="{Binding IsConfirmVisible}" Margin="5"/>
+                </StackPanel>
+                <Button Command="{Binding TestScriptCommand}" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="avares://funnytext/Assets/menu_about.png" Width="40" Height="40"/>
+                        <TextBlock Text="Тест" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding MainViewCommand}" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="avares://funnytext/Assets/return.png" Width="40" Height="40"/>
+                        <TextBlock Text="В меню" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                <StackPanel>
+                    <TextBox Watermark="для теста скрипта нажмите на кнопку" IsReadOnly="True" Text="{Binding result}" AcceptsReturn="True" Height="70" />
+                </StackPanel>
+            </ScrollViewer>
+            <views1:TutorialView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DataContext="{Binding Tutorial}" />
+        </Grid>
+    </Border>
+</UserControl>

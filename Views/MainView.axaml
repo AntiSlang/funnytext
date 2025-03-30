@@ -1,0 +1,69 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:funnytext.ViewModels"
+             xmlns:views="clr-namespace:funnytext.Views"
+             mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="1920"
+             x:Class="funnytext.Views.MainView"
+             x:DataType="vm:MainViewModel">
+    <Border ><Grid RowDefinitions="*, 2*, *, 2* , *" ColumnDefinitions="*, *" Margin="20,30,20,20">
+        <ContentControl x:Name="ContentControl" />
+        <Button Grid.Row="0" Grid.Column="0" Command="{Binding StatisticsCommand}" >
+            <StackPanel Orientation="Horizontal">
+                <Image Source="avares://funnytext/Assets/menu_stats.png" Width="40" Height="40" />
+                <TextBlock Text="Статистика" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Row="0" Grid.Column="1" Command="{Binding LinksCommand}" >
+            <StackPanel Orientation="Horizontal">
+                <Image Source="avares://funnytext/Assets/menu_about.png" Width="40" Height="40"/>
+                <TextBlock Text="Ссылки" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Row="1" Grid.Column="0" Command="{Binding RandomCommand}" >
+            <StackPanel Orientation="Horizontal">
+                <Image Source="avares://funnytext/Assets/menu_random.png" Width="40" Height="40" />
+                <TextBlock Text="Рандом" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Row="1" Grid.Column="1" Command="{Binding EncryptionCommand}" >
+            <StackPanel Orientation="Horizontal">
+                <Image Source="avares://funnytext/Assets/menu_encryption.png" Width="40" Height="40" />
+                <TextBlock Text="Шифрование" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding TextChangeCommand}" Height="100">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="avares://funnytext/Assets/menu_start.png" Width="40" Height="40"/>
+                <TextBlock Text="Изменение" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Row="2" Grid.Column="1" IsVisible="{Binding IsTrayActive}" Command="{Binding MinimizeToTrayCommand}" Height="100">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="avares://funnytext/Assets/tray.png" Width="40" Height="40"/>
+                <TextBlock Text="Трей" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Row="3" Grid.Column="0" Command="{Binding SettingsCommand}" >
+            <StackPanel Orientation="Horizontal">
+                <Image Source="avares://funnytext/Assets/menu_settings.png" Width="40" Height="40"/>
+                <TextBlock Text="Настройки" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Row="3" Grid.Column="1" Command="{Binding ScriptCommand}" >
+            <StackPanel Orientation="Horizontal">
+                <Image Source="avares://funnytext/Assets/menu_profiles.png" Width="40" Height="40" />
+                <TextBlock Text="Скрипты" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Row="4" Grid.Column="0" Command="{Binding CloseCommand}" >
+            <StackPanel Orientation="Horizontal">
+                <Image Source="avares://funnytext/Assets/menu_quit.png" Width="40" Height="40"/>
+                <TextBlock Text="Закрыть" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <views:TutorialView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DataContext="{Binding Tutorial}" />
+    </Grid>
+    </Border>
+</UserControl>

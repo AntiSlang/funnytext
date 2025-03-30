@@ -1,0 +1,222 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:funnytext.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:views="clr-namespace:funnytext.Views"
+             mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="1920"
+             x:Class="funnytext.Views.RandomView"
+             x:DataType="vm:RandomViewModel">
+    <Border>
+        <Grid RowDefinitions="2*,6*,*,2*" ColumnDefinitions="*,Auto" Margin="10,30,10,10">
+            <ScrollViewer Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                <StackPanel>
+                    <TextBox Watermark="здесь будет результат" IsReadOnly="True" Text="{Binding result}" AcceptsReturn="True" Height="70" />
+                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="Кол-во символов" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <TextBox Width="50" TextChanged="OnNumberInputChanged" Text="{Binding InputKolvo}" Margin="5,0,5,0" />
+                        <Button Content="-" Width="30" IsEnabled="{Binding ButtonKolvoInteractable}" Command="{Binding ChangeZnachCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>-1</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                        <Button Content="+" Width="30" Command="{Binding ChangeZnachCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>1</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+            
+            <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <CheckBox Content="Цифры" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[0]}" />
+                    <CheckBox Content="Символы" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[1]}" />
+                    <CheckBox Content="Строчная латиница" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[2]}" />
+                    <CheckBox Content="Прописная латиница" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[3]}" />
+                    <CheckBox Content="Строчная кириллица" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[4]}" />
+                    <CheckBox Content="Прописная кириллица" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[5]}" />
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <CheckBox Content="Свои" Command="{Binding OnChangeSomething}" IsChecked="{Binding toggles[6]}" VerticalAlignment="Center" />
+                        <TextBox Width="100" Text="{Binding inputsvoi}" Watermark="символы" Margin="5,0,0,0" />
+                    </StackPanel>
+                    <CheckBox Content="Удалить похожие" Command="{Binding OnChangeSomething}" IsChecked="{Binding similar}" />
+                    <CheckBox Content="Без повторений" Command="{Binding OnChangeSomething}" IsChecked="{Binding unique}" />
+                </StackPanel>
+            </ScrollViewer>
+
+            <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="{Binding countnumbers[0]}" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <Button Content="-" IsEnabled="{Binding buttoncoef[0]}" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>-1</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                        <TextBox Width="50" TextChanged="OnNumberInputChanged" Text="{Binding coefstext[0]}" Margin="5,0,5,0" />
+                        <Button Content="+" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>1</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="{Binding countnumbers[1]}" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <Button Content="-" IsEnabled="{Binding buttoncoef[1]}" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>-2</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                        <TextBox Width="50" TextChanged="OnNumberInputChanged" Text="{Binding coefstext[1]}" Margin="5,0,5,0" />
+                        <Button Content="+" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>2</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="{Binding countnumbers[2]}" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <Button Content="-" IsEnabled="{Binding buttoncoef[2]}" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>-3</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                        <TextBox Width="50" TextChanged="OnNumberInputChanged" Text="{Binding coefstext[2]}" Margin="5,0,5,0" />
+                        <Button Content="+" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>3</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="{Binding countnumbers[3]}" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <Button Content="-" IsEnabled="{Binding buttoncoef[3]}" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>-4</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                        <TextBox Width="50" TextChanged="OnNumberInputChanged" Text="{Binding coefstext[3]}" Margin="5,0,5,0" />
+                        <Button Content="+" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>4</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="{Binding countnumbers[4]}" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <Button Content="-" IsEnabled="{Binding buttoncoef[4]}" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>-5</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                        <TextBox Width="50" TextChanged="OnNumberInputChanged" Text="{Binding coefstext[4]}" Margin="5,0,5,0" />
+                        <Button Content="+" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>5</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="{Binding countnumbers[5]}" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <Button Content="-" IsEnabled="{Binding buttoncoef[5]}" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>-6</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                        <TextBox Width="50" TextChanged="OnNumberInputChanged" Text="{Binding coefstext[5]}" Margin="5,0,5,0" />
+                        <Button Content="+" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>6</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="{Binding countnumbers[6]}" VerticalAlignment="Center" Margin="0,0,10,0" />
+                        <Button Content="-" IsEnabled="{Binding buttoncoef[6]}" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>-7</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                        <TextBox Width="50" TextChanged="OnNumberInputChanged" Text="{Binding coefstext[6]}" Margin="5,0,5,0" />
+                        <Button Content="+" Width="30" Command="{Binding ChangeZnachCoefCommand}">
+                            <Button.CommandParameter>
+                                <system:Int32>7</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+
+            <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Height="150">
+                <StackPanel>
+                    <TextBox Watermark="здесь будет набор символов, из которых будет генерироваться текст" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding alltext}" AcceptsReturn="True" Height="70" />
+                    <TextBlock Text="Скопировано" IsVisible="{Binding copied}" VerticalAlignment="Center" Margin="0,0,0,0" />
+                </StackPanel>
+            </ScrollViewer>
+
+            <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <Button IsVisible="{Binding sharebtn}" Command="{Binding ShareCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/share.png" Width="40" Height="40"/>
+                                <TextBlock Text="Поделиться" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding RandomViewCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/re.png" Width="40" Height="40"/>
+                                <TextBlock Text="Сброс" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding MakeCommand}" IsEnabled="{Binding ButtonStartInteractable}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/okey.png" Width="40" Height="40"/>
+                                <TextBlock Text="Готово" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding SteamCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/key.png" Width="40" Height="40"/>
+                                <TextBlock Text="Ключ" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,0,0,0">
+                            <Button Command="{Binding ShowPresetMenuCommand}" Margin="5">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="avares://funnytext/Assets/menu_profiles.png" Width="40" Height="40"/>
+                                    <TextBlock Text="Профиль" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox x:Name="ProfileSelection" ItemsSource="{Binding Profiles}" 
+                                          SelectedItem="{Binding SelectedProfile}"
+                                          IsVisible="{Binding IsProfileSelectionVisible}" Margin="5"/>
+                                <TextBox Watermark="название" x:Name="PresetNameInput" Text="{Binding PresetName}"
+                                         IsVisible="{Binding IsSaving}" Margin="5"/>
+                            </StackPanel>
+                            <Button Content="OK" IsEnabled="{Binding SavingIsEnabled}" Command="{Binding ConfirmPresetCommand}"
+                                    IsVisible="{Binding IsConfirmVisible}" Margin="5"/>
+                        </StackPanel>
+                        <Button Command="{Binding MainViewCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/return.png" Width="40" Height="40"/>
+                                <TextBlock Text="В меню" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Command="{Binding RandomSettingsCommand}" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="avares://funnytext/Assets/menu_random.png" Width="40" Height="40"/>
+                                <TextBlock Text="Случайные настройки" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+            <views:TutorialView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DataContext="{Binding Tutorial}" />
+        </Grid>
+    </Border>
+</UserControl>
